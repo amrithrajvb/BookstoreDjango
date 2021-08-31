@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"><h1>Book add</h1></div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4"> </div>
+        <div class="col-4">
+<!--        not mandatory action value in form-initially get:GET method    <form action="{%url 'addbook' %}" method="post">-->
+                <form action="" method="post">
+                {%csrf_token%}
+<!--                {{form.as_p}}-->
+
+                        {%for field in form%}
+          {%if field.errors%}
+          <div class="text-danger text-decoration-none" >
+{{field.errors}}
+          </div>
+          {%endif%}
+        {{field.label_tag}}
+        {{field}}
+        {%endfor%}
+<!--                <div class="mb-3">-->
+<!--                    <label for="">Book_Name</label>-->
+<!--                    <input type="text" name="Book_name" class="form-control">-->
+<!--                </div>-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="">Author</label>-->
+<!--                    <input type="text" name="Author" class="form-control">-->
+<!--                </div>-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="">Price</label>-->
+<!--                    <input type="text" name="Book_price" class="form-control">-->
+<!--                </div>-->
+<!--                <div class="mb-3">-->
+<!--                    <label for="">Copies</label>-->
+<!--                    <input type="text" name="Book_copies" class="form-control">-->
+<!--                </div>-->
+                <button type="submit" class="btn btn-success">ChangeBook</button>
+            </form>
+        </div>
+        <div class="col-4">
+
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
