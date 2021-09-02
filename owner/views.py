@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from owner import forms
 
 from owner.models import Book
+from django.contrib import messages
 # Create your views here.
 
 def registration(request):
@@ -49,7 +50,8 @@ def book_add(request):
            # book.save()
 
            form.save()
-           return redirect('addbook')
+           messages.success(request,"Book added successfully")
+           return redirect('allbooks')
        else:
            return  render(request,'book_add.html',{"form":form})
    return render(request,'book_add.html',context)

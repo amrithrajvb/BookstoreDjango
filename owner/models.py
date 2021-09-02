@@ -13,6 +13,16 @@ class Book(models.Model):
         return self.book_name
         # return self.author
 
+class Order(models.Model):
+    product=models.ForeignKey(Book,on_delete=models.CASCADE)
+    user=models.CharField(max_length=20)
+    address=models.CharField(max_length=100)
+    options=(("ordered","ordered"),("delivered","delivered"),
+             ("in_transit","in_transit"),("cancelled","cancelled"))
+    status=models.CharField(max_length=100,choices=options,default="ordered")
+    phone=models.CharField(max_length=20)
+    expected_deliverydate=models.DateField(null=True)
+
 # book=Book(book_name="randamoozham",author="mt",price=200,copies=500)
 # book.save()
 
